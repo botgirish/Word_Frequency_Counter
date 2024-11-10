@@ -1,0 +1,90 @@
+/* Ensure the whole screen scrolls */
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Additional styling for inputs, buttons, loading spinner, etc. */
+.input-field, .submit-button {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #76b852, #8DC26F);
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, #8DC26F, #76b852);
+}
+
+.loading-spinner {
+  margin: 20px 0;
+}
+
+/* Results table styling with vertical scroll and sticky header */
+.results-table {
+  width: 100%;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border-radius: 5px;
+  max-height: 300px; /* Limits height of table to 300px */
+  overflow-y: auto; /* Enables vertical scroll for the table */
+  scrollbar-width: thin; /* Thin scrollbar for Firefox */
+}
+
+.results-table::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar for Chrome, Edge, and Safari */
+}
+
+.results-table::-webkit-scrollbar-thumb {
+  background-color: #76b852;
+  border-radius: 5px;
+}
+
+.results-table thead {
+  background-color: #76b852;
+  color: white;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.results-table th, .results-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.results-table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
