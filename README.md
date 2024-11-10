@@ -78,8 +78,10 @@ Run the React App:
 
 In the terminal, start the React app by running:
 
-npm start
+# npm start
 This should open the app in your default browser at http://localhost:3000.
+
 Step 4: Test the Application
+
 Input a URL in the frontend input field.
 Click Fetch to see the word frequencies displayed in the table.
