@@ -18,21 +18,21 @@ function App() {
     useEffect(() => {
         const interval = setInterval(() => {
             setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgrounds.length);
-        }, 7000); // Change every 7 seconds
+        }, 4000); // Change every 4 seconds
         return () => clearInterval(interval);
     }, [backgrounds.length]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        setResults([]);
+        setLoading(true); // Set loading to true when the request starts
+        setResults([]); // Reset previous results
         try {
             const response = await axios.post('/api/word-frequency', { url, n: numWords });
-            setResults(response.data);
+            setResults(response.data); // Set results from API response
         } catch (error) {
             console.error('Error fetching word frequencies', error);
         }
-        setLoading(false);
+        setLoading(false); // Set loading to false when the request completes
     };
 
     return (
@@ -69,22 +69,24 @@ function App() {
                     </div>
                 ) : (
                     results.length > 0 && (
-                        <table className="results-table">
-                            <thead>
-                                <tr>
-                                    <th>Word</th>
-                                    <th>Frequency</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {results.map(({ word, count }, index) => (
-                                    <tr key={index}>
-                                        <td>{word}</td>
-                                        <td>{count}</td>
+                        <div className="scrollable-table-container">
+                            <table className="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Word</th>
+                                        <th>Frequency</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {results.map(({ word, count }, index) => (
+                                        <tr key={index}>
+                                            <td>{word}</td>
+                                            <td>{count}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     )
                 )}
             </div>
